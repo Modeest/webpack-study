@@ -9,6 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, '../dist'),
         filename: '[name].js'
     },
+    stats: { children: false },  // Fuck，此处解决构建之后，出现 Entrypoint undefined = index.html 问题，不影响构建结果，但是看着难受
     devServer: {
         port: 3000,
         contentBase: path.resolve(__dirname, '../dist')
@@ -26,6 +27,42 @@ module.exports = {
                     "css-loader",
                     "postcss-loader",
                     "sass-loader"
+                ]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 8092,
+                            name: "img/[hash:7].[ext]"
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 8092,
+                            name: "media/[hash:7].[ext]"
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 8092,
+                            name: "font/[hash:7].[ext]"
+                        }
+                    }
                 ]
             }
         ]
