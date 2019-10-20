@@ -9,6 +9,8 @@
         <svg class="icon" aria-hidden="true">
             <use xlink:href="#iconfavorfill" />
         </svg>
+
+        <router-view />
     </div>
 </template>
 
