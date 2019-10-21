@@ -12,10 +12,15 @@ module.exports = {
     stats: { children: false },  // Fuck，此处解决构建之后，出现 Entrypoint undefined = index.html 问题，不影响构建结果，但是看着难受
     devServer: {
         port: 3000,
-        contentBase: path.resolve(__dirname, '../dist')
+        hot: true
     },
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            },
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
