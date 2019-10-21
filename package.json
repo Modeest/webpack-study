@@ -4,7 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "webpack-dev-server --config config/webpack.dev.js"
+        "dev": "webpack-dev-server --config config/webpack.dev.js",
+        "build": "node ./config/webpack.prod.js",
+        "dist": "serve dist"
     },
     "keywords": [],
     "author": "",
@@ -14,6 +16,7 @@
         "@babel/preset-env": "^7.6.3",
         "babel-eslint": "^10.0.3",
         "babel-loader": "^8.0.6",
+        "clean-webpack-plugin": "^3.0.0",
         "css-loader": "^3.2.0",
         "eslint": "^6.5.1",
         "eslint-friendly-formatter": "^4.0.1",
@@ -21,6 +24,7 @@
         "eslint-plugin-vue": "^5.2.3",
         "file-loader": "^4.2.0",
         "html-webpack-plugin": "^3.2.0",
+        "minimist": "^1.2.0",
         "node-sass": "^4.12.0",
         "postcss-loader": "^3.0.0",
         "postcss-preset-env": "^6.7.0",
@@ -35,6 +39,7 @@
         "webpack": "^4.41.2",
         "webpack-cli": "^3.3.9",
         "webpack-dev-server": "^3.8.2",
+        "webpack-merge": "^4.2.2",
         "webpack-spritesmith": "^1.0.2"
     },
     "dependencies": {
