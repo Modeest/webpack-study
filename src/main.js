@@ -9,7 +9,7 @@ new Vue({
 });
 
 // test code: test suporting Promise in browser.
-let p = new Promise(function (resolve, reject) {
+let p = new Promise(function (resolve) {
     setTimeout(() => {
         resolve("done");
     }, 1000);

@@ -1,6 +1,7 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const StyleLintPlugin = require("stylelint-webpack-plugin");
 
 module.exports = {
     mode: 'development',
@@ -14,6 +15,7 @@ module.exports = {
         port: 3000,
         hot: true
     },
+    devtool: 'source-map',
     module: {
         rules: [
             {
@@ -24,6 +26,15 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
+            },
+            {
+                test: /\.(js|vue)$/,
+                exclude: /node_modules/,
+                enforce: "pre",
+                options: {
+                    formatter: require("eslint-friendly-formatter")
+                },
+                loader: "eslint-loader",
             },
             {
                 test: /\.scss$/,
@@ -78,6 +89,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../public/index.html'),
             title: "Webpack Study"
+        }),
+        new StyleLintPlugin({
+            files: ["src/**/*.{vue,css,scss,sass}"]
         })
     ]
 }

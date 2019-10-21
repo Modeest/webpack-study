@@ -28,6 +28,7 @@ $color: red;
 
 h2 {
     color: $color;
+    background: #fff;
     transform: translateX(100px);
 }
 </style>
