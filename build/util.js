@@ -49,30 +49,32 @@ const configureCSSLoader = env => {
 // configureBabelLoader。生成 babel-loader 的配置。与原来不同的地方是，会根据测试环境决定是否使用 babelrc 的配置，会根据构建的模式，配置不同的浏览器范围。
 const configureBabelLoader = (modern, browserlist) => {
     let options = {
-        babelrc: false,
-        presets: [
-            [
-                "@babel/preset-env",
-                {
-                    modules: false,
-                    corejs: "3.0.1",
-                    useBuiltIns: "usage",
-                    targets: {
-                        browsers: browserlist
-                    }
-                }
-            ]
-        ]
-    };
-    let babelLoader = {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader"
+        cacheDirectory: true
     };
 
     if (modern) {
-        babelLoader.options = options;
+        options = Object.assign(options, {
+            babelrc: false,
+            presets: [
+                [
+                    "@babel/preset-env",
+                    {
+                        modules: false,
+                        corejs: "3.0.1",
+                        useBuiltIns: "usage",
+                        targets: {
+                            browsers: browserlist
+                        }
+                    }
+                ]
+            ]
+        });
     }
+    let babelLoader = {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ["thread-loader", { loader: "babel-loader", options }]
+    };
     return babelLoader;
 };
 

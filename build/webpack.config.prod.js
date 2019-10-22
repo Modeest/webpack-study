@@ -79,6 +79,8 @@ module.exports = function (
 
     // 生产环境特定配置
     const prodConf = {
+        // 启用production模式，启用该模式下内置的优化。
+        mode: "production",
         output: {
             filename
         },
@@ -86,16 +88,17 @@ module.exports = function (
         plugins,
         // 分离公共代码
         optimization: {
-            splitChunks: {
-                cacheGroups: {
-                    vendors: {
-                        test: /[\\/]node_modules[\\/]/,
-                        name: "vendors",
-                        chunks: "all",
-                        reuseExistingChunk: true
-                    }
-                }
-            },
+            // 与dll文件作用重复，删除splitChunks
+            // splitChunks: {
+            //     cacheGroups: {
+            //         vendors: {
+            //             test: /[\\/]node_modules[\\/]/,
+            //             name: "vendors",
+            //             chunks: "all",
+            //             reuseExistingChunk: true
+            //         }
+            //     }
+            // },
             runtimeChunk: "single"
         }
     };
