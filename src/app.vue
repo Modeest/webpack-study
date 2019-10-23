@@ -1,5 +1,8 @@
 <template>
-    <h3>Hello {{title}}</h3>
+    <div class="box">
+        <h3>Hello {{title}}</h3>
+        <router-view />
+    </div>
 </template>
 
 <script>
