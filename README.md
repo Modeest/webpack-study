@@ -26,3 +26,4 @@
 11. npm i webpack-merge -D: 合并webpack配置
 12. npm install -D eslint eslint-loader eslint-plugin-vue babel-eslint eslint-friendly-formatter
 13. npm install stylelint stylelint-webpack-plugin stylelint-config-standard -D
+14. npm install -D webpack-spritesmith

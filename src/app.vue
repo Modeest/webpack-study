@@ -1,6 +1,16 @@
 <template>
     <div class="box">
         <h3>Hello {{title}}</h3>
+        <ul>
+            <li class="icon-img1"></li>
+            <li class="icon-img2"></li>
+            <li class="icon-img3"></li>
+            <li class="icon-img4"></li>
+            <li class="ico ico-img1"></li>
+            <li class="ico ico-img2"></li>
+            <li class="ico ico-img3"></li>
+            <li class="ico ico-img4"></li>
+        </ul>
         <router-view />
     </div>
 </template>
@@ -30,6 +40,11 @@ export default {
 </script>
 
 <style lang="scss">
+// 1倍图
+@import '~sprite.scss';
+// 2倍图
+@import '~sprite2.scss';
+
 $color: greenyellow;
 /* stylelint-disable */
 /* stylelint-disable unit-whitelist */
@@ -37,5 +52,18 @@ h3 {
     color: $color;
     background: #ffff99;
     transform: translateX(100px);
+}
+
+.icon-img1 {
+    @include sprite($img1);
+}
+.icon-img2 {
+    @include sprite($img2);
+}
+.icon-img3 {
+    @include sprite($img3);
+}
+.icon-img4 {
+    @include sprite($img4);
 }
 </style>
