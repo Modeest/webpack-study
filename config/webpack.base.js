@@ -1,6 +1,7 @@
 const path = require('path');
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const StyleLintPlugin = require("stylelint-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -20,6 +21,17 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
+            },
+            {
+                test: /\.(js|vue)$/,
+                exclude: /node_modules/,
+                // 确保eslint检查的是未经其他loader处理的源代码
+                enforce: "pre",
+                options: {
+                    // 美化检查报告
+                    formatter: require("eslint-friendly-formatter")
+                },
+                loader: "eslint-loader",
             },
             {
                 test: /\.scss$/,
@@ -75,5 +87,9 @@ module.exports = {
             template: path.resolve(__dirname, "../public/index.html"),
             title: "Webpack Study"
         }),
+        new StyleLintPlugin({
+            // stylelint需要检查的文件
+            files: ["src/**/*.{vue,css,scss,sass}"]
+        })
     ]
 }

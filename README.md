@@ -22,4 +22,7 @@
     指定需要兼容的浏览器
     通过 useBuiltIns 指定为 usage，@babel/preset-env 可以按需引入对应的 polyfill，减小文件大小。有一个需要注意的点，corejs 与 package.json 中依赖的 core-js 的版本需要一致，否则可能会构建失败。
 9. npm install webpack-dev-server -D
-
+10. npm i serve -g: 全局安装serve，执行 npm run dist
+11. npm i webpack-merge -D: 合并webpack配置
+12. npm install -D eslint eslint-loader eslint-plugin-vue babel-eslint eslint-friendly-formatter
+13. npm install stylelint stylelint-webpack-plugin stylelint-config-standard -D

@@ -19,7 +19,7 @@ export default {
         const res = [1, 2, 3, [1, 2, [3, [4]]]].flat(2);
         console.log('res:', res);
 
-        new Promise((resolve, reject) => {
+        new Promise((resolve) => {
             setTimeout(() => {
                 console.log('Hello Promise');
                 resolve();
@@ -31,8 +31,11 @@ export default {
 
 <style lang="scss">
 $color: greenyellow;
+/* stylelint-disable */
+/* stylelint-disable unit-whitelist */
 h3 {
     color: $color;
+    background: #ffff99;
     transform: translateX(100px);
 }
 </style>
