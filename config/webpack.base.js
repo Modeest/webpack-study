@@ -1,8 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 const DebugPlugin = require("./DebugPlugin");
 
 module.exports = {
@@ -111,20 +113,34 @@ module.exports = {
         }),
         new ExtractTextPlugin("css/[name].[hash:8].css"),
         // 通过enable，控制vconsole是否开启
-        new DebugPlugin({ enable: true })
+        new DebugPlugin({ enable: true }),
+        // 将dll文件添加到html中，必须放在htmlwebpackPlugin后面使用
+        new AddAssetHtmlPlugin({
+            // 需要将哪些文件插入到html中
+            filepath: path.resolve(__dirname, "../dll/*.dll.js"),
+            // 将dll文件输出到哪个目录
+            outputPath: "js",
+            // dll文件在页面中最终的引用路径
+            publicPath: "js"
+        }),
+        new webpack.DllReferencePlugin({
+            // webpack需要根据manifest.json找到对应dll文件中的模块。
+            manifest: require("../dll/vue.manifest.json")
+        })
     ],
     // 分离公共代码
     optimization: {
-        splitChunks: {
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: "vendors",
-                    chunks: "all",
-                    reuseExistingChunk: true
-                }
-            }
-        },
+        // 与dll文件作用重复，删除splitChunks配置
+        // splitChunks: {
+        //     cacheGroups: {
+        //         vendors: {
+        //             test: /[\\/]node_modules[\\/]/,
+        //             name: "vendors",
+        //             chunks: "all",
+        //             reuseExistingChunk: true
+        //         }
+        //     }
+        // },
         runtimeChunk: "single"
     }
 }
