@@ -35,3 +35,6 @@
 16. npm i extract-text-webpack-plugin@next -D: 抽离css为单独文件，利用浏览器缓存
     直接下载报错，老版本不支持4.0，需要next版本支持4.0
     OptimizeCSSPlugin也是没有用到，但是css文件被压缩
+17. npm i vconsole: 定制webpack插件
+18. npm install hard-source-webpack-plugin -D: 缓存webpack内部中间编译过程
+

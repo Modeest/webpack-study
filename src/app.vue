@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <h3>Hello {{title}}</h3>
+        <h3>Hello {{title}} v3</h3>
         <ul>
             <li class="icon-img1"></li>
             <li class="icon-img2"></li>

@@ -2,12 +2,15 @@ const path = require('path');
 const merge = require("webpack-merge");
 const webpackBaseConfig = require('./webpack.base');
 const SpritesmithPlugin = require("webpack-spritesmith");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const { templateFunction } = require('./util');
 
 module.exports = merge(webpackBaseConfig, {
     mode: 'development',
     // Fuck，此处解决构建之后，出现 Entrypoint undefined = index.html 问题，不影响构建结果，但是看着难受
     stats: { children: false },
+    // 启用缓存
+    cache: true,
     /*
     // none: 不生成source-map（生产环境）
     // source-map: 映射到原始源代码，source-map 作为单独的文件保存。
@@ -50,7 +53,8 @@ module.exports = merge(webpackBaseConfig, {
             apiOptions: {
                 cssImageRef: "~sprite.png"
             }
-        })
+        }),
+        new HardSourceWebpackPlugin()
     ],
     devServer: {
         contentBase: path.resolve(__dirname, "../dist"),
