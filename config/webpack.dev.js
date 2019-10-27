@@ -16,12 +16,6 @@ module.exports = merge(webpackBaseConfig, {
     // eval-source-map：映射到原始源代码，只映射到行。（开发环境）
     */
     devtool: 'eval-source-map',
-    // resolve: 告诉 Webpack 解析模块时应该搜索的目录,绝对路径和相对路径都能使用，但是它们之间有一点差异
-    // ~ 是 Webpack 中约定俗成的一个符号，表示从 resolve.modules 中指定的路径。
-    // 假如在 app.vue 中 import img from '~sprite.png', 那么最终经过上面讲述的查找过程后，实际的路径是 ./src/assets/generated/sprite.png。因此 ~ 与 resolve.modules 的配置有直接的关系。
-    resolve: {
-        modules: ["../node_modules", "../src/assets/generated"]
-    },
     plugins: [
         // 合并精灵图
         /**

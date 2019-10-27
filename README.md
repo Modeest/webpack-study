@@ -27,3 +27,11 @@
 12. npm install -D eslint eslint-loader eslint-plugin-vue babel-eslint eslint-friendly-formatter
 13. npm install stylelint stylelint-webpack-plugin stylelint-config-standard -D
 14. npm install -D webpack-spritesmith
+15（暂不可用）. npm install terser-webpack-plugin -D:压缩JS，ulify-es不再维护，使用terserPlugin代替
+    这里有问题，已经压缩，为什么还需要独立下载，是因为webpack生产模式已经开启压缩？
+    暂时先去掉该压缩插件："terser-webpack-plugin": "^2.2.1",
+    const TerserPlugin = require("terser-webpack-plugin");
+    plugins: [new TerserPlugin()]
+16. npm i extract-text-webpack-plugin@next -D: 抽离css为单独文件，利用浏览器缓存
+    直接下载报错，老版本不支持4.0，需要next版本支持4.0
+    OptimizeCSSPlugin也是没有用到，但是css文件被压缩
