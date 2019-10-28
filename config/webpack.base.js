@@ -119,7 +119,8 @@ module.exports = {
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "../public/index.html"),
-            title: "Webpack Study"
+            title: "Webpack Study",
+            inlineSource: 'flexible'
         }),
         new StyleLintPlugin({
             // stylelint需要检查的文件

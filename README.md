@@ -40,3 +40,5 @@
 19. npm i clean-webpack-plugin -D 清空目录
 20. npm install add-asset-html-webpack-plugin -D: 将dll文件插入html
 21. npm install thread-loader -D: 多线程
+22. npm install raw-loader -D
+    <script>${require('raw-loader!babel-loader!../node_modules/lib-flexible')}</script>
