@@ -84,7 +84,7 @@ module.exports = {
                         loader: "url-loader",
                         options: {
                             limit: 8092,
-                            name: "/img/[name]-[hash:7].[ext]"
+                            name: "/img/[hash:7].[ext]"
                         }
                     }
                 ]
@@ -96,7 +96,7 @@ module.exports = {
                         loader: "url-loader",
                         options: {
                             limit: 8092,
-                            name: "media/[name]-[hash:7].[ext]"
+                            name: "media/[hash:7].[ext]"
                         }
                     }
                 ]
@@ -108,7 +108,7 @@ module.exports = {
                         loader: "url-loader",
                         options: {
                             limit: 8092,
-                            name: "font/[name]-[hash:7].[ext]"
+                            name: "font/[hash:7].[ext]"
                         }
                     }
                 ]
@@ -119,14 +119,13 @@ module.exports = {
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "../public/index.html"),
-            title: "Webpack Study",
-            inlineSource: 'flexible'
+            title: "Webpack Study"
         }),
         new StyleLintPlugin({
             // stylelint需要检查的文件
             files: ["src/**/*.{vue,css,scss,sass}"]
         }),
-        new ExtractTextPlugin("css/[name]-[hash:8].css"),
+        new ExtractTextPlugin("css/[hash:8].css"),
         // 通过enable，控制vconsole是否开启
         new DebugPlugin({ enable: true }),
         // 将dll文件添加到html中，必须放在htmlwebpackPlugin后面使用

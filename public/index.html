@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%= htmlWebpackPlugin.options.title %>11</title>
-    <script>${ require('raw-loader!../src/js/flexible.js') }</script>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <script>${ require('raw-loader!babel-loader!../node_modules/lib-flexible') }</script>
 </head>
 
 <body>
