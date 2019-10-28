@@ -15,6 +15,9 @@ module.exports = {
     // ~ 是 Webpack 中约定俗成的一个符号，表示从 resolve.modules 中指定的路径。
     // 假如在 app.vue 中 import img from '~sprite.png', 那么最终经过上面讲述的查找过程后，实际的路径是 ./src/assets/generated/sprite.png。因此 ~ 与 resolve.modules 的配置有直接的关系。
     resolve: {
+        alias: {
+            // components: './src/components/'
+        },
         modules: ["../node_modules", "../src/assets/generated"]
     },
     output: {
@@ -26,7 +29,17 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                // loader: "babel-loader"
+                use: [
+                    // 在babel-loader之前添加thread-loader。
+                    { loader: "thread-loader" },
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            cacheDirectory: true
+                        }
+                    }
+                ]
             },
             {
                 test: /\.vue$/,
@@ -70,7 +83,7 @@ module.exports = {
                         loader: "url-loader",
                         options: {
                             limit: 8092,
-                            name: "/img/[hash:7].[ext]"
+                            name: "img/[hash:7].[ext]"
                         }
                     }
                 ]
@@ -82,7 +95,7 @@ module.exports = {
                         loader: "url-loader",
                         options: {
                             limit: 8092,
-                            name: "/media/[hash:7].[ext]"
+                            name: "media/[hash:7].[ext]"
                         }
                     }
                 ]
@@ -94,7 +107,7 @@ module.exports = {
                         loader: "url-loader",
                         options: {
                             limit: 8092,
-                            name: "/font/[hash:7].[ext]"
+                            name: "font/[hash:7].[ext]"
                         }
                     }
                 ]

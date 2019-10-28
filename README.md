@@ -39,4 +39,4 @@
 18. npm install hard-source-webpack-plugin -D: 缓存webpack内部中间编译过程
 19. npm i clean-webpack-plugin -D 清空目录
 20. npm install add-asset-html-webpack-plugin -D: 将dll文件插入html
-
+21. npm install thread-loader -D: 多线程
