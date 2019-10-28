@@ -52,6 +52,7 @@ module.exports = merge(webpackBaseConfig, {
             // apiOptions 中的 cssImageRef 是一个雪碧图的路径，CSS 文件中将使用该路径用作背景图
             apiOptions: {
                 cssImageRef: "~sprite.png"
+                // cssImageRef: path.resolve(__dirname, "../src/assets/generated/sprite.png")
             }
         }),
         new HardSourceWebpackPlugin()

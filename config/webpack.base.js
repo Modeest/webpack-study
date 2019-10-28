@@ -17,6 +17,7 @@ module.exports = {
     resolve: {
         alias: {
             // components: './src/components/'
+            '@': '../src'
         },
         modules: ["../node_modules", "../src/assets/generated"]
     },
@@ -83,7 +84,7 @@ module.exports = {
                         loader: "url-loader",
                         options: {
                             limit: 8092,
-                            name: "img/[hash:7].[ext]"
+                            name: "/img/[name]-[hash:7].[ext]"
                         }
                     }
                 ]
@@ -95,7 +96,7 @@ module.exports = {
                         loader: "url-loader",
                         options: {
                             limit: 8092,
-                            name: "media/[hash:7].[ext]"
+                            name: "media/[name]-[hash:7].[ext]"
                         }
                     }
                 ]
@@ -107,7 +108,7 @@ module.exports = {
                         loader: "url-loader",
                         options: {
                             limit: 8092,
-                            name: "font/[hash:7].[ext]"
+                            name: "font/[name]-[hash:7].[ext]"
                         }
                     }
                 ]
@@ -124,7 +125,7 @@ module.exports = {
             // stylelint需要检查的文件
             files: ["src/**/*.{vue,css,scss,sass}"]
         }),
-        new ExtractTextPlugin("css/[name].[hash:8].css"),
+        new ExtractTextPlugin("css/[name]-[hash:8].css"),
         // 通过enable，控制vconsole是否开启
         new DebugPlugin({ enable: true }),
         // 将dll文件添加到html中，必须放在htmlwebpackPlugin后面使用
