@@ -42,3 +42,8 @@
 21. npm install thread-loader -D: 多线程
 22. npm i raw-loader@0.5.1 -D
     <script>${require('raw-loader!babel-loader!../node_modules/lib-flexible')}</script>
+
+23. npm i speed-measure-webpack-plugin -D :  打包速度
+24. npm i webpack-bundle-analyzer -D
+    const WebpackBundleAnalyzer = require("webpack-bundle-analyzer");
+    new WebpackBundleAnalyzer.BundleAnalyzerPlugin()
