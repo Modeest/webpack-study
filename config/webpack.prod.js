@@ -1,7 +1,7 @@
 const merge = require("webpack-merge");
 const webpackBaseConfig = require('./webpack.base');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = merge(webpackBaseConfig, {
     // module.exports = merge(webpackBaseConfig, {
@@ -11,7 +11,7 @@ module.exports = merge(webpackBaseConfig, {
         // 每次进行预编译前先将旧的dll文件清空。
         new CleanWebpackPlugin(),
         // 分析包文件大小
-        new BundleAnalyzerPlugin()
+        // new BundleAnalyzerPlugin()
     ]
 });
 /*
