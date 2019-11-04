@@ -21,9 +21,6 @@ module.exports = {
         },
         modules: ["../node_modules", "../src/assets/generated"]
     },
-    externals: {
-        vue: 'Vue'
-    },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, '../dist')
@@ -89,7 +86,31 @@ module.exports = {
                             limit: 8092,
                             name: "/img/[hash:7].[ext]"
                         }
-                    }
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65
+                            },
+                            // optipng.enabled: false will disable optipng
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: [0.65, 0.90],
+                                speed: 4
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            // the webp option will enable WEBP
+                            webp: {
+                                quality: 75
+                            }
+                        }
+                    },
                 ]
             },
             {
@@ -138,7 +159,7 @@ module.exports = {
         }),
         new webpack.DllReferencePlugin({
             // webpack需要根据manifest.json找到对应dll文件中的模块。
-            manifest: require("../dll/vue.manifest.json")
+            manifest: require("../dll/common.manifest.json")
         })
     ],
     // 分离公共代码

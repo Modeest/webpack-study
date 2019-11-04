@@ -11,6 +11,7 @@
             <li class="ico ico-img3"></li>
             <li class="ico ico-img4"></li>
         </ul>
+        <img src="./assets/images/a1.jpg" alt />
         <router-view />
     </div>
 </template>

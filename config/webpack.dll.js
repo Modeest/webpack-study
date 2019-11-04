@@ -6,7 +6,7 @@ module.exports = {
     mode: "production",
     entry: {
         // 把 vue 模块放到一个单独的dll文件中
-        vue: ["vue", "vue-router", "vuex"]
+        common: ["vue", "vue-router", "vuex"]
     },
     output: {
         // 输出的dll文件的名称，[name] 代表当前dll文件的名称，
