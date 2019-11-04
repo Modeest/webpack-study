@@ -21,9 +21,9 @@ module.exports = {
         },
         modules: ["../node_modules", "../src/assets/generated"]
     },
-    // externals: {
-    //     vue: 'Vue'
-    // },
+    externals: {
+        vue: 'Vue'
+    },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, '../dist')
@@ -134,11 +134,7 @@ module.exports = {
         // 将dll文件添加到html中，必须放在htmlwebpackPlugin后面使用
         new AddAssetHtmlPlugin({
             // 需要将哪些文件插入到html中
-            filepath: path.resolve(__dirname, "../dll/*.dll.js"),
-            // 将dll文件输出到哪个目录
-            // outputPath: "js",
-            // dll文件在页面中最终的引用路径
-            // publicPath: "js"
+            filepath: path.resolve(__dirname, "../dll/*.dll.js")
         }),
         new webpack.DllReferencePlugin({
             // webpack需要根据manifest.json找到对应dll文件中的模块。
